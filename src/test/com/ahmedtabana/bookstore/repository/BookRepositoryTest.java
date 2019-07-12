@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 
+import java.util.Date;
+
 import static org.junit.Assert.*;
 
 @RunWith(Arquillian.class)
@@ -31,6 +33,17 @@ public class BookRepositoryTest {
 
     }
 
+    @Test(expected = Exception.class)
+    public void findWithInvalidId(){
+        bookRepository.find(null);
+    }
+    @Test(expected = Exception.class)
+    public void createInvalidBook(){
+        //Book book = new Book("isbn", "a   title", 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description");
+       Book book = new Book("isbn", null, 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description");
+
+       bookRepository.create(book);
+    }
     @Test
     public void create() throws Exception{
 
@@ -39,7 +52,7 @@ public class BookRepositoryTest {
         assertEquals(0, bookRepository.findAll().size());
 
         // Create a book
-        Book book = new Book();
+        Book book = new Book("isbn", "a   title", 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description");
         bookRepository.create(book);
         Long bookId = book.getId();
 
