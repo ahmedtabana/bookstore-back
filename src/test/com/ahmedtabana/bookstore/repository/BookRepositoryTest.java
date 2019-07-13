@@ -2,6 +2,9 @@ package com.ahmedtabana.bookstore.repository;
 
 import com.ahmedtabana.bookstore.model.Book;
 import com.ahmedtabana.bookstore.model.Language;
+import com.ahmedtabana.bookstore.util.IsbnGenerator;
+import com.ahmedtabana.bookstore.util.NumberGenerator;
+import com.ahmedtabana.bookstore.util.TextUtil;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -27,7 +30,10 @@ public class BookRepositoryTest {
         return ShrinkWrap.create(JavaArchive.class)
                 .addClass(BookRepository.class)
                 .addClass(Book.class)
+                .addClass(TextUtil.class)
                 .addClass(Language.class)
+                .addClass(NumberGenerator.class)
+                .addClass(IsbnGenerator.class)
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
                 .addAsManifestResource("META-INF/test-persistence.xml", "persistence.xml");
 
@@ -59,6 +65,8 @@ public class BookRepositoryTest {
         // Check created book
         assertNotNull(bookId);
 
+        assertEquals(book.getTitle(),"a title");
+        assertTrue(book.getIsbn().startsWith("13"));
         // Find created book
         Book bookFound = bookRepository.find(bookId);
 
