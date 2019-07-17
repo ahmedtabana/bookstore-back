@@ -10,41 +10,43 @@ import java.util.Date;
 @Entity
 public class Book {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
-
-
-    @Column(length = 200)
-    @NotNull
-    @Size(min = 1, max = 200)
-    private String title;
-
-
-    @Column(length = 10000)
-    @Size(min = 1, max = 10000)
-    private String description;
-
-    @Column(name = "unit_cost")
-    @Min(1)
-    private Float unitCost;
 
     @Column(length = 50)
     @NotNull
     @Size(min = 1, max = 50)
     private String isbn;
 
+    @Column(length = 200)
+    @NotNull
+    @Size(min = 1, max = 200)
+    private String title;
+
+    @Column(name = "image_url")
+    private String imageURL;
+
+    @Enumerated
+    private Language language;
+
+    @Column(name = "unit_cost")
+    @Min(1)
+    private Float unitCost;
+
+    @Column(name = "nb_of_pages")
+    private Integer nbOfPages;
+
     @Column(name = "publication_date")
     @Temporal(TemporalType.DATE)
     @Past
     private Date publicationDate;
 
-    @Column(name = "nb_of_pages")
-    private Integer nbOfPages;
 
-    @Column(name = "image_url")
-    private String imageURL;
+    @Column(length = 10000)
+    @Size(min = 1, max = 10000)
+    private String description;
 
-    private Language language;
 
     public Book() {
     }
