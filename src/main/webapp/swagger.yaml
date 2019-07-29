@@ -43,7 +43,13 @@ paths:
       operationId: "createBook"
       consumes:
       - "application/json"
-      parameters: []
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Book to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/Book"
       responses:
         201:
           description: "The book is created"
@@ -132,15 +138,19 @@ definitions:
         description: "Title of the book"
         minLength: 1
         maxLength: 200
+      imageUrl:
+        type: "string"
       language:
         type: "string"
         enum:
         - "ENGLISH"
         - "FRENCH"
-        - "ARABIC"
-        - "GERMAN"
-        - "SPANSIH"
+        - "SPANSISH"
+        - "PORTUGUESE"
         - "ITALIAN"
+        - "FINISH"
+        - "GERMAN"
+        - "DEUTCH"
         - "RUSSIAN"
       unitCost:
         type: "number"
@@ -157,6 +167,4 @@ definitions:
         description: "Description of the book"
         minLength: 1
         maxLength: 10000
-      imageUrl:
-        type: "string"
     description: "Book resource representation"

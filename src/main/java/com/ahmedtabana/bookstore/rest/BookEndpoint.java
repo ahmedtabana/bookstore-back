@@ -64,7 +64,7 @@ public class BookEndpoint {
             @ApiResponse(code = 201, message = "The book is created"),
             @ApiResponse(code = 415, message = "Format is not JSon")
     })
-    public Response createBook(Book book, @Context UriInfo uriInfo) {
+    public Response createBook(@ApiParam(value = "Book to be created", required = true) Book book, @Context UriInfo uriInfo) {
         book = bookRepository.create(book);
         URI createdURI = uriInfo.getBaseUriBuilder().path(book.getId().toString()).build();
         return Response.created(createdURI).build();

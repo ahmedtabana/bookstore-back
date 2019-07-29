@@ -31,7 +31,7 @@ public class Book {
     private String title;
 
     @Column(name = "image_url")
-    private String imageURL;
+    private String imageUrl;
 
     @Enumerated
     private Language language;
@@ -65,7 +65,7 @@ public class Book {
         this.nbOfPages = nbOfPages;
         this.language = language;
         this.publicationDate = publicationDate;
-        this.imageURL = imageURL;
+        this.imageUrl = imageURL;
         this.description = description;
     }
     public Long getId() {
@@ -125,11 +125,11 @@ public class Book {
     }
 
     public String getImageUrl() {
-        return imageURL;
+        return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
-        this.imageURL = imageUrl;
+        this.imageUrl = imageUrl;
     }
 
     public Language getLanguage() {
@@ -150,7 +150,7 @@ public class Book {
                 ", isbn='" + isbn + '\'' +
                 ", publicationDate=" + publicationDate +
                 ", nbOfPages=" + nbOfPages +
-                ", imageUrl='" + imageURL + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", language=" + language +
                 '}';
     }
