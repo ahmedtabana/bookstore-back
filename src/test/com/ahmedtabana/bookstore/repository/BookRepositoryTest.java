@@ -1,7 +1,6 @@
 package com.ahmedtabana.bookstore.repository;
 
 import com.ahmedtabana.bookstore.model.Book;
-import com.ahmedtabana.bookstore.model.Language;
 import com.ahmedtabana.bookstore.util.IsbnGenerator;
 import com.ahmedtabana.bookstore.util.NumberGenerator;
 import com.ahmedtabana.bookstore.util.TextUtil;
@@ -31,7 +30,6 @@ public class BookRepositoryTest {
                 .addClass(BookRepository.class)
                 .addClass(Book.class)
                 .addClass(TextUtil.class)
-                .addClass(Language.class)
                 .addClass(NumberGenerator.class)
                 .addClass(IsbnGenerator.class)
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
@@ -46,7 +44,7 @@ public class BookRepositoryTest {
     @Test(expected = Exception.class)
     public void createInvalidBook(){
         //Book book = new Book("isbn", "a   title", 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description");
-       Book book = new Book("isbn", null, 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description");
+       Book book = new Book("isbn", null, 12F, 123, "ENGLISH", new Date(), "imageURL", "description");
 
        bookRepository.create(book);
     }
@@ -58,7 +56,7 @@ public class BookRepositoryTest {
         assertEquals(0, bookRepository.findAll().size());
 
         // Create a book
-        Book book = new Book("isbn", "a   title", 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description");
+        Book book = new Book("isbn", "a   title", 12F, 123,  "ENGLISH", new Date(), "imageURL", "description");
         bookRepository.create(book);
         Long bookId = book.getId();
 

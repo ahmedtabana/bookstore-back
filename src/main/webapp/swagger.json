@@ -166,8 +166,7 @@
           "type" : "string"
         },
         "language" : {
-          "type" : "string",
-          "enum" : [ "ENGLISH", "FRENCH", "SPANSISH", "PORTUGUESE", "ITALIAN", "FINISH", "GERMAN", "DEUTCH", "RUSSIAN" ]
+          "type" : "string"
         },
         "unitCost" : {
           "type" : "number",

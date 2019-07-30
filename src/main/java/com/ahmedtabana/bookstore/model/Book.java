@@ -33,8 +33,8 @@ public class Book {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Enumerated
-    private Language language;
+
+    private String language;
 
     @Column(name = "unit_cost")
     @Min(1)
@@ -58,7 +58,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String isbn, String title, Float unitCost, Integer nbOfPages, Language language, Date publicationDate, String imageURL, String description) {
+    public Book(String isbn, String title, Float unitCost, Integer nbOfPages, String language, Date publicationDate, String imageURL, String description) {
         this.isbn = isbn;
         this.title = title;
         this.unitCost = unitCost;
@@ -132,11 +132,11 @@ public class Book {
         this.imageUrl = imageUrl;
     }
 
-    public Language getLanguage() {
+    public String getLanguage() {
         return language;
     }
 
-    public void setLanguage(Language language) {
+    public void setLanguage(String language) {
         this.language = language;
     }
 
